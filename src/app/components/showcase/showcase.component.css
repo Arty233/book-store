@@ -1,0 +1,9 @@
+.books {
+    display: flex;
+}
+
+.book-card {
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+}
