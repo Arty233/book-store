@@ -10,10 +10,10 @@ export class Book {
     title: string;
     year: Date;
 
-    constructor(authors:Author[], pageCount: number, title: string, year: Date) {
+    constructor(authors: Author[], pageCount: number, title: string, year: Date) {
         this.authors = authors;
         this.pageCount = pageCount;
         this.title = title;
         this.year = year;
     }
-    };
+};

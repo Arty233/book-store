@@ -1,5 +1,11 @@
+body {
+    height:100%
+}
+
 .books {
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .book-card {

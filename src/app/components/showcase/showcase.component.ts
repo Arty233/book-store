@@ -13,7 +13,7 @@ import { BookService } from 'src/app/services/book.service';
 export class ShowcaseComponent implements OnInit {
 
   books: Observable<Book[]>;
-  constructor(public bookServ: BookService) {
+  constructor(private bookServ: BookService) {
 
   }
 
