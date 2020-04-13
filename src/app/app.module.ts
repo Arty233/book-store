@@ -12,6 +12,15 @@ import { AccountComponent } from './components/account/account.component';
 import { CreateBookComponent } from './components/create-book/create-book.component';
 import { environment } from 'src/environments/environment';
 
+
+//запихнуть в отдельный модуль
+import { StoreModule } from '@ngrx/store';
+import * as fromShowcase from 'src/app/core/store/show-case-store/showcase.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { ShowcaseEffects } from 'src/app/core/store/show-case-store/showcase.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +34,13 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //запихнуть в отдельный модуль
+    StoreModule.forRoot({ books: fromShowcase.showcaseReducer }),
+    EffectsModule.forRoot([ShowcaseEffects]), //если написать forFeature вместо forRoot, то не работает
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

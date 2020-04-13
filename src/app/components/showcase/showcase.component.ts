@@ -3,7 +3,11 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 import { Book } from '../../models/book';
-import { BookService } from 'src/app/services/book.service';
+import { BookService } from 'src/app/core/services/book.service';
+import { Store, select} from '@ngrx/store';
+import { IAppState } from 'src/app/core/store/state';
+import { selectShowcaseList } from 'src/app/core/store/show-case-store/show.selectors';
+import { getBooks } from 'src/app/core/store/show-case-store/showcase.actions';
 
 @Component({
   selector: 'app-showcase',
@@ -13,12 +17,16 @@ import { BookService } from 'src/app/services/book.service';
 export class ShowcaseComponent implements OnInit {
 
   books: Observable<Book[]>;
-  constructor(private bookServ: BookService) {
+  books$ = this._store.pipe(select(selectShowcaseList));
+  constructor(private bookServ: BookService,private _store: Store<IAppState>) {
 
   }
 
   ngOnInit(): void {
-    this.books = this.bookServ.getBooks()
+    this.books = this.bookServ.getBooks();
+    this._store.dispatch(getBooks());
   }
+
+  
 
 }
