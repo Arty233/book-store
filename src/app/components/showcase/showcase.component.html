@@ -1,9 +1,10 @@
+<test></test>
+
 <div style="height: 100%;">
     <div class="books">
-        <div class="book-card" *ngFor="let book of books | async">
+        <div class="book-card" *ngFor="let book of books$ | async">
             <p>{{book.title}}</p>
         </div>
     </div>
-
 
 </div>

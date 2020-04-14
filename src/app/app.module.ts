@@ -16,10 +16,11 @@ import { environment } from 'src/environments/environment';
 //запихнуть в отдельный модуль
 import { StoreModule } from '@ngrx/store';
 import * as fromShowcase from 'src/app/core/store/show-case-store/showcase.reducers';
+import * as fromTest from 'src/app/core/store/test/test.reducer'; //ttt
 import { EffectsModule } from '@ngrx/effects';
 import { ShowcaseEffects } from 'src/app/core/store/show-case-store/showcase.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { TestComponent } from './components/showcase/test.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ShowcaseComponent,
     CartComponent,
     AccountComponent,
-    CreateBookComponent
+    CreateBookComponent,
+    TestComponent //ttt
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -36,11 +38,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     //запихнуть в отдельный модуль
-    StoreModule.forRoot({ books: fromShowcase.showcaseReducer }),
+    StoreModule.forRoot({ showcase: fromShowcase.showcaseReducer, test: fromTest.testReducer }),
     EffectsModule.forRoot([ShowcaseEffects]), //если написать forFeature вместо forRoot, то не работает
     StoreDevtoolsModule.instrument({
       maxAge: 10
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

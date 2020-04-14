@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from "rxjs/operators";
 import { Book } from '../../models/book';
 import { BookService } from 'src/app/core/services/book.service';
-import { Store, select} from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { IAppState } from 'src/app/core/store/state';
-import { selectShowcaseList } from 'src/app/core/store/show-case-store/show.selectors';
+import { selectShowcaseList } from 'src/app/core/store/show-case-store/showcase.selectors';
 import { getBooks } from 'src/app/core/store/show-case-store/showcase.actions';
+
+import { TestComponent } from './test.component'; //ttt
 
 @Component({
   selector: 'app-showcase',
@@ -15,18 +17,21 @@ import { getBooks } from 'src/app/core/store/show-case-store/showcase.actions';
   styleUrls: ['./showcase.component.css']
 })
 export class ShowcaseComponent implements OnInit {
-
   books: Observable<Book[]>;
-  books$ = this._store.pipe(select(selectShowcaseList));
-  constructor(private bookServ: BookService,private _store: Store<IAppState>) {
+  books$: Observable<Book[]> = this._store.pipe(select(selectShowcaseList));
+  constructor(private bookServ: BookService, private _store: Store<IAppState>) {
 
   }
 
   ngOnInit(): void {
     this.books = this.bookServ.getBooks();
     this._store.dispatch(getBooks());
+    setTimeout(() =>
+      console.log(this.books$),
+      3000
+    )
   }
 
-  
+
 
 }

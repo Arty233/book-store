@@ -11,7 +11,7 @@ import * as showcaseActions from './showcase.actions'
 //
 export const showcaseReducer = createReducer(
     initialState,
-    on(showcaseActions.getBooksSuccess, (state, {books}) => ({ ...state, books: books}))
+    on(showcaseActions.getBooksSuccess, (state, {books}) => ({ ...state, books: books})),
 )
 
 // export function reducer(state: State | undefined, action: Action) {

@@ -8,5 +8,5 @@ export const getBooks = createAction(
 
 export const getBooksSuccess = createAction(
     '[Showcase API] BooksLoaded Success',
-    props<{books: Observable<Book[]>}>()
+    props<{books: Book[]}>()
 );
