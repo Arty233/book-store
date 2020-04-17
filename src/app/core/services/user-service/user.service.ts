@@ -16,18 +16,10 @@ import { map } from "rxjs/operators";
 export class UserService {
     id: string;
     constructor(private db: AngularFireDatabase) {
+        this.id = firebase.auth().currentUser.uid;
     }
 
-    // getUser(): Observable<User[]> {
-    //     return this.db.list('users').valueChanges().pipe(map((res: any) => {
-    //         return res.map(item => {
-    //             return new User(
-    //                 item.name,
-    //                 item.email
-    //             )
-    //         });
-    //     }))
-    // }
+   
 
     getUser(): Observable<User> {
         return this.db.object('users/' + this.id).valueChanges().pipe(
@@ -37,12 +29,13 @@ export class UserService {
         )
     }
 
-    updateUser(name, email, address, phoneNumber): void {
+    updateUser(user): void {
+        console.log(user);
         firebase.database().ref('users/' + this.id).set({
-            name: name,
-            email: email,
-            address: address,
-            phoneNumber: phoneNumber
+            name: user.name,
+            email: user.email,
+            address: user.address,
+            phoneNumber: user.phoneNumber
         })
     }
 }
