@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import * as firebase from "firebase/app";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'book-store';
+  userEmail: string;
   constructor() {
-
+    if (firebase.auth().currentUser)
+      this.userEmail = firebase.auth().currentUser.email
   }
 
 }

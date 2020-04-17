@@ -1,0 +1,29 @@
+<div id="login-box">
+    <div class="left">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label>
+                Email:
+                <input type="email" formControlName="email">
+            </label>
+
+            <label>
+                Password:
+                <input type="password" formControlName="password">
+            </label>
+
+            <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+        </form>
+
+        <button class="btn-redirect" (click)="redirectToLogin()">I don't have an account</button>
+    </div>
+
+    <div class="right">
+        <span class="loginwith">Sign in with<br />social network</span>
+
+        <button class="social-signin google">Log in with Google</button>
+    </div>
+
+</div>
+
+<pre>{{loginForm.value | json}}</pre>
+<pre>{{ loginForm.valid | json}}</pre>

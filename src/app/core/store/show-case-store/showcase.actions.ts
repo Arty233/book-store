@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Book } from 'src/app/models/book';
+import { Book } from 'src/app/models/book.model';
 import { Observable } from 'rxjs';
 
 export const getBooks = createAction(

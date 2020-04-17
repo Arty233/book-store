@@ -1,0 +1,50 @@
+<div id="login-box">
+    <div class="left">
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <div class="form-group" [ngClass]="{
+                'invalid': name.invalid && (name.dirty || name.touched),
+                'valid':  name.valid && (name.dirty || name.touched)
+            }">
+
+                <label>
+                    Name:
+                    <input type="text" formControlName="name">
+                </label>
+            </div>
+
+            <div class="form-group" [ngClass]="{
+                'invalid': email.invalid && (email.dirty || email.touched),
+                'valid':  email.valid && (email.dirty || email.touched)
+            }">
+            <label>
+                Email:
+                <input type="email" formControlName="email">
+            </label>
+            </div>
+
+            <div class="form-group" [ngClass]="{
+                'invalid': password.invalid && (password.dirty || password.touched),
+                'valid':  password.valid && (password.dirty || password.touched)
+            }">
+            <label>
+                Password:
+                <input type="password" formControlName="password">
+            </label>
+            </div>
+
+            <button type="submit" [disabled]="!signUpForm.valid">Submit</button>
+        </form>
+
+        <button (click)="redirectToLogin()">I have an account</button>
+    </div>
+
+    <div class="right">
+        <span class="loginwith">Sign in with<br />social network</span>
+
+        <button class="social-signin google">Log in with Google</button>
+    </div>
+
+</div>
+
+<pre>{{signUpForm.value | json}}</pre>
+<pre>{{ signUpForm.valid | json}}</pre>
