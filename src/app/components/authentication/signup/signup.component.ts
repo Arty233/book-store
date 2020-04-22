@@ -40,6 +40,10 @@ export class SignupComponent implements OnInit {
     this.auth.signUp(this.email.value, this.password.value, this.name.value);
   }
 
+  signInWithGoogle() {
+    this.auth.loginWithGoogle();
+  }
+
   redirectToLogin() {
     this.router.navigate(['login']);
   }

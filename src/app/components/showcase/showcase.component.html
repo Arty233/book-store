@@ -1,12 +1,11 @@
-<div >
+<div>
     <div class="books">
         <div class="book-card" *ngFor="let book of books$ | async">
-            <div class="cover">
-                <img src="https://legacyogden.com/wp-content/uploads/2015/07/No-Image-Available1.png">
+            <div class="cover">         
             </div>
             <p>{{book.title}}</p>
             <p id="author">{{book.authors[0].firstName}}</p>
+            <button (click)="redirectToEdit(book)">Edit</button>
         </div>
     </div>
-
 </div>

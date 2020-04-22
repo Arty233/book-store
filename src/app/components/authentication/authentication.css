@@ -24,7 +24,9 @@ body {
 }
 
 .left {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     top: 0;
     left: 0;
     box-sizing: border-box;
@@ -96,6 +98,14 @@ button[type="submit"]:active {
 button[type="submit"]:disabled {
     color: gray;
     background: #022c24;
+    
+}
+
+.btn-redirect {
+    margin: 1px;
+    color: black;
+    border: 2px solid rgb(4, 95, 39);
+    border-radius: 12px;;
 }
 
 

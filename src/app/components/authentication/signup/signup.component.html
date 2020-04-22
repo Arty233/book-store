@@ -35,13 +35,13 @@
             <button type="submit" [disabled]="!signUpForm.valid">Submit</button>
         </form>
 
-        <button (click)="redirectToLogin()">I have an account</button>
+        <button (click)="redirectToLogin()" class="btn-redirect">I have an account</button>
     </div>
 
     <div class="right">
         <span class="loginwith">Sign in with<br />social network</span>
 
-        <button class="social-signin google">Log in with Google</button>
+        <button class="social-signin google" (click)="signInWithGoogle()">Log in with Google</button>
     </div>
 
 </div>

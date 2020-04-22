@@ -3,9 +3,17 @@
         <ul>
             <a routerLink="/">Showcase</a> |
             <a routerLink="create">Create book</a> |
-            <a routerLink="user">Account Page</a> |
-            <a routerLink="cart">Cart</a> |
-            <a routerLink="signup">Sign-up</a>
+            <div *ngIf="(user$ | async)?.email" style="display: inline;">
+                <a routerLink="user">Account Page</a> |
+            </div>
+            <a routerLink="cart">Cart</a>
+            <div *ngIf="!(user$ | async)?.email; else signin">
+                <a routerLink="signup">Sign-up/Sign-in</a>
+            </div>
+            <ng-template #signin>
+                <p>Signed-in as {{(user$ | async)?.email}}</p>
+                <button (click)="logout()">Logout</button>
+            </ng-template>
         </ul>
     </header>
 </div>

@@ -1,9 +1,9 @@
 <div *ngIf="!isEditing; else editF">
     <div>
-        <p>{{(user | async)?.name}}</p>
-        <p>{{(user | async)?.email}}</p>
-        <p>{{(user | async)?.address}}</p>
-        <p>{{(user | async)?.phoneNumber}}</p>
+        <p>{{(user$ | async)?.name}}</p>
+        <p>{{(user$ | async)?.email}}</p>
+        <p>{{(user$| async)?.address}}</p>
+        <p>{{(user$ | async)?.phoneNumber}}</p>
         
 
         <button (click)="edit()">Edit</button>

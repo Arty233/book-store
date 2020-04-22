@@ -1,4 +1,4 @@
-<form [formGroup]="createBookForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editBookForm" (ngSubmit)="onSubmit()">
     <label formGroupName="authors">
         <label>
             First Name:
@@ -33,8 +33,9 @@
 
 
 
-    <button type="submit" [disabled]="!createBookForm.valid">Submit</button>
+    <button type="submit" [disabled]="!editBookForm.valid">Submit</button>
 </form>
 
-<pre>{{createBookForm.value | json}}</pre>
-<pre>{{ createBookForm.valid | json}}</pre>
+
+<pre>{{editBookForm.value | json}}</pre>
+<pre>{{editBookForm.valid | json}}</pre>

@@ -15,6 +15,7 @@ import { TestComponent } from './components/showcase/test.component';
 import { CoreModule } from './core/core.module';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { SignupComponent } from './components/authentication/signup/signup.component';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SignupComponent } from './components/authentication/signup/signup.compo
     CreateBookComponent,
     TestComponent,
     LoginComponent,
-    SignupComponent //ttt
+    SignupComponent,
+    EditBookComponent //ttt
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

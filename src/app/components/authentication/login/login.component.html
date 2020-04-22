@@ -12,6 +12,7 @@
             </label>
 
             <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+            <p *ngIf="message">{{message}}</p>
         </form>
 
         <button class="btn-redirect" (click)="redirectToLogin()">I don't have an account</button>
@@ -20,7 +21,7 @@
     <div class="right">
         <span class="loginwith">Sign in with<br />social network</span>
 
-        <button class="social-signin google">Log in with Google</button>
+        <button class="social-signin google" (click)="signInWithGoogle()">Log in with Google</button>
     </div>
 
 </div>
