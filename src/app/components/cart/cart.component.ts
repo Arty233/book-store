@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
   constructor(private _store: Store<IAppState>) { }
 
   ngOnInit(): void {
+    
   }
 
 }

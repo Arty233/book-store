@@ -5,7 +5,7 @@ import { map } from "rxjs/operators";
 import { Book } from '../../../models/book.model';
 import * as firebase from 'firebase';
 
-const ARRAY = ['Changed!', 'test']
+const IDs = ['0', '2'];
 
 @Injectable({
   providedIn: 'root'

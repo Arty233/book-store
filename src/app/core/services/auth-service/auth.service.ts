@@ -46,19 +46,37 @@ export class AuthService {
   }
 
   createUser(email: string, name: string, uid: string): void {
-    this.afd.database.ref('users/' + uid).once('value').then((data) => {
-      if (data.val()) {
-        return Promise.reject('UID already exist!');
-      }
-    }).then(() => {
-      let user = <User>{
-        name: name,
-        email: email
-      }
-      this.afd.database.ref('users/' + uid).set(user);
-      console.log('user created!')
-    })
+    this.afd.database.ref('users/' + uid).once('value')
+      .then((data) => {
+        if (data.val()) {
+          console.log("User already exists");
+        }
+        else {
+          let user = <User>{
+            name: name,
+            email: email
+          }
+          this.afd.database.ref('users/' + uid).set(user);
+          console.log('user created!');
+        }
+      })
   }
+
+  // createUser(email: string, name: string, uid: string): void {
+  //   this.afd.database.ref('users/' + uid).once('value')
+  //     .then((data) => {
+  //       if (data.val()) {
+  //         Promise.reject('UID already exist!');
+  //       }
+  //     }).then(() => {
+  //       let user = <User>{
+  //         name: name,
+  //         email: email
+  //       }
+  //       this.afd.database.ref('users/' + uid).set(user);
+  //       console.log('user created!')
+  //     })
+  // }
 
   logout() {
     firebase.auth().signOut().catch(error => {

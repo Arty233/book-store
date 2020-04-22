@@ -46,7 +46,11 @@ export class EditBookComponent implements OnInit {
   }
 
   createFormControls() {
-    this.editBookForm.patchValue({ //как вписать авторов разобраться позже
+    this.editBookForm.patchValue({
+      authors: {
+        firstName: this.book.authors[0].firstName,
+        lastName: this.book.authors[0].lastName
+      },
       imageUrl: this.book.imageUrl,
       pageCount: this.book.pageCount,
       title: this.book.title,
