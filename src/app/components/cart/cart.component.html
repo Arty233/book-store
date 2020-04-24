@@ -1,1 +1,12 @@
-<p>You have zero items</p>
+<div>
+    <p>You have {{totalItems}} books in your cart</p>
+    <div class="books">
+        <div class="book-card" *ngFor="let book of cartBooks">
+            <div class="cover">         
+            </div>
+            <p>{{book.title}}</p>
+            <p id="author">{{book.authors[0].firstName}}</p>
+            <button (click)="deleteCartItem(book)">Remove</button>
+        </div>
+    </div>
+</div>

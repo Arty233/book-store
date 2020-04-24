@@ -1,11 +1,35 @@
 <div>
-    <div class="books">
+    <div class="search">
+        <form [formGroup]="searchForm">
+            <label>
+                Search
+                <input type="text" #searchField formControlName="searchField">
+                <button (click)="search(searchField.value)"></button>
+            </label>
+            <button (click)="sort('title')">Sort by title</button>
+        </form>
+    </div>
+    <div class="books" *ngIf="!isFiltered; else filteredBooks">
         <div class="book-card" *ngFor="let book of books$ | async">
-            <div class="cover">         
+            <div class="cover">
             </div>
             <p>{{book.title}}</p>
             <p id="author">{{book.authors[0].firstName}}</p>
             <button (click)="redirectToEdit(book)">Edit</button>
+            <button (click)="addToCart(book)">Add</button>
         </div>
     </div>
+
+    <ng-template #filteredBooks>
+        <div class="books">
+            <div class="book-card" *ngFor="let book of filteredBooks$ | async">
+                <div class="cover">
+                </div>
+                <p>{{book.title}}</p>
+                <p id="author">{{book.authors[0].firstName}}</p>
+                <button (click)="redirectToEdit(book)">Edit</button>
+                <button (click)="addToCart(book)">Add</button>
+            </div>
+        </div>
+    </ng-template>
 </div>

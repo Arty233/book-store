@@ -54,7 +54,8 @@ export class AuthService {
         else {
           let user = <User>{
             name: name,
-            email: email
+            email: email,
+            cart: ['1', '2', '3'],
           }
           this.afd.database.ref('users/' + uid).set(user);
           console.log('user created!');

@@ -16,7 +16,7 @@ export class BookService {
   }
 
   getBooks(): Observable<Book[]> {
-    // this.db.object('books/0').valueChanges().subscribe(book => console.log(book));
+    // this.db.object('books/5').valueChanges().subscribe(book => console.log(book));
     return this.db.list('books').valueChanges().pipe(
       map((res: any) => {
         return res.map(item => {
@@ -29,6 +29,38 @@ export class BookService {
           )
         });
       }))
+  }
+
+  // getBook(id): Observable<Book> {
+  //   return this.db.object('books/' + id).valueChanges().pipe(
+  //     map((res: any) => {
+  //       return new Book(
+  //         res.authors,
+  //         res.pageCount,
+  //         res.title,
+  //         res.year,
+  //         res.imageUrl
+  //       )
+  //     })
+  //   )
+  // }
+
+
+  getCartBooks(ids): Book[] {
+    let books: Book[] = [];
+    for (let id of ids) {
+      this.db.object('books/' + id).valueChanges().subscribe((book:any) => {
+        console.log(id);
+        let newBook = new Book(
+          book.authors,
+          book.pageCount,
+          book.title,
+          book.year,
+          book.imageUrl)
+        books.push(newBook);
+      });
+    }
+    return books;
   }
 
   addBook(book): void {
